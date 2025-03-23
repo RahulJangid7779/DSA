@@ -1,6 +1,6 @@
 package linklist;
 
-public class howtocreatealinklist {
+public class deletenthnodeusingslowfast {
     public static class Node {
         int data;
         Node next;
@@ -103,28 +103,41 @@ public class howtocreatealinklist {
         size--;
         return val;
     }
- 
+    // Delete Nth element in ll from back
+    public static Node deletenthelement(int n){
+      Node slow=head;
+      Node fast=head;
+      // fast ko nth step move
+      for(int i=0;i<n;i++){
+        if(fast==null) return head;
+        fast=fast.next;
+      }
+      // n>size 
+      if(fast==null){
+        return slow.next;
+      }
+      // move one by one when fast not reach to tail
+      while(fast.next!=null){
+        slow=slow.next;
+        fast=fast.next;
+      }
+      // modify the node
+      slow.next=slow.next.next;
+      return head;
+
+      }
+
+    
+    
     public static void main(String args[]) {
-        howtocreatealinklist ll = new howtocreatealinklist();
+    deletenthnodeusingslowfast ll = new deletenthnodeusingslowfast();
 
         ll.addFirst(13);
-        ll.printll();
-
         ll.addFirst(12);
+        ll.addFirst(18);
+        ll.printll();  // Output: 18 -> 12 -> 13 -> Null
+        ll.deletenthelement(9);
         ll.printll();
-
-        ll.add(2, 18);
-        ll.printll();
-
-        ll.addLast(14);
-        ll.printll();
-
-        ll.removeFirst();
-        ll.printll();
-
-        ll.removeLast();
-        ll.printll();
-
-        System.out.println("Size: " + ll.size);
     }
-}
+
+  }

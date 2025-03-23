@@ -1,6 +1,6 @@
 package linklist;
 
-public class howtocreatealinklist {
+public class deletenthelementinllusingrecursiveapproach {
     public static class Node {
         int data;
         Node next;
@@ -103,28 +103,39 @@ public class howtocreatealinklist {
         size--;
         return val;
     }
- 
+    // Delete Nth element in ll from back
+    public static Node deleteNthFromEnd(Node node, int n) {
+      // Base case: If we reach the end, return null
+      if (node == null) {
+          return null;
+      }
+
+      // Recursively move to the next node
+      node.next = deleteNthFromEnd(node.next, n);
+
+      // Increase counter when returning from recursion
+      count++;
+
+      // If counter matches `n`, delete the node
+      if (count == n) {
+          return node.next;  // Skip current node
+      }
+
+      return node;  // Return the current node if not deleting
+  }
+static int count=0;
+public static void removenthfromend(int n){
+  count =0;
+  head=deleteNthFromEnd(head, n);
+}
     public static void main(String args[]) {
-        howtocreatealinklist ll = new howtocreatealinklist();
+      deletenthelementinllusingrecursiveapproach ll = new deletenthelementinllusingrecursiveapproach();
 
         ll.addFirst(13);
-        ll.printll();
-
         ll.addFirst(12);
+        ll.addFirst(18);
+        ll.printll();  // Output: 18 -> 12 -> 13 -> Null
+        ll.deleteNthFromEnd(9);
         ll.printll();
-
-        ll.add(2, 18);
-        ll.printll();
-
-        ll.addLast(14);
-        ll.printll();
-
-        ll.removeFirst();
-        ll.printll();
-
-        ll.removeLast();
-        ll.printll();
-
-        System.out.println("Size: " + ll.size);
     }
 }

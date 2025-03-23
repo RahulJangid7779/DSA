@@ -1,6 +1,6 @@
 package linklist;
 
-public class howtocreatealinklist {
+public class recursiveapproachtoreversell {
     public static class Node {
         int data;
         Node next;
@@ -49,24 +49,6 @@ public class howtocreatealinklist {
         System.out.println("Null");
     }
 
-    // Add at Index
-    public static void add(int index, int data) {
-        if (index == 0) {
-            addFirst(data);
-            return;
-        }
-        Node newNode = new Node(data);
-        size++;
-        Node temp = head;
-        int i = 0;
-        while (i < index - 1 && temp.next != null) {
-            temp = temp.next;
-            i++;
-        }
-        newNode.next = temp.next;
-        temp.next = newNode;
-    }
-
     // Remove First
     public static int removeFirst() {
         if (size == 0) {
@@ -103,28 +85,28 @@ public class howtocreatealinklist {
         size--;
         return val;
     }
- 
+
+    // Reverse a linked list (Fixed static method)
+    public static Node reverse(Node head) {
+      if(head==null || head.next==null){
+        return head;
+      }
+      Node newHead=reverse(head.next);
+      head.next.next=head;
+      head.next=null;
+      return newHead;
+    }
+
     public static void main(String args[]) {
-        howtocreatealinklist ll = new howtocreatealinklist();
+        reversealinkedlist ll = new reversealinkedlist();
 
         ll.addFirst(13);
-        ll.printll();
-
         ll.addFirst(12);
-        ll.printll();
-
-        ll.add(2, 18);
-        ll.printll();
-
-        ll.addLast(14);
-        ll.printll();
-
-        ll.removeFirst();
-        ll.printll();
-
-        ll.removeLast();
-        ll.printll();
-
-        System.out.println("Size: " + ll.size);
+        ll.addFirst(18);
+        ll.printll(); // Output: 18 -> 12 -> 13 -> Null
+        ll.reverse();
+        ll.printll(); // Output: 13 -> 12 -> 18 -> Null
+        ll.reverse();
+        printll();
     }
 }

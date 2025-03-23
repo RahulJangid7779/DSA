@@ -1,6 +1,6 @@
 package linklist;
 
-public class howtocreatealinklist {
+public class recursivesearch {
     public static class Node {
         int data;
         Node next;
@@ -49,24 +49,6 @@ public class howtocreatealinklist {
         System.out.println("Null");
     }
 
-    // Add at Index
-    public static void add(int index, int data) {
-        if (index == 0) {
-            addFirst(data);
-            return;
-        }
-        Node newNode = new Node(data);
-        size++;
-        Node temp = head;
-        int i = 0;
-        while (i < index - 1 && temp.next != null) {
-            temp = temp.next;
-            i++;
-        }
-        newNode.next = temp.next;
-        temp.next = newNode;
-    }
-
     // Remove First
     public static int removeFirst() {
         if (size == 0) {
@@ -103,28 +85,40 @@ public class howtocreatealinklist {
         size--;
         return val;
     }
- 
+
+    // ✅ Corrected Recursive Search Function
+    public static int helper(Node head, int key) {
+        if (head == null) {
+            return -1; // Not found
+        }
+        if (head.data == key) {
+            return 0; // Found at current index
+        }
+        int index = helper(head.next, key);
+        if (index == -1) {
+            return -1; // Not found in rest of list
+        }
+        return index + 1; // Add 1 to index found in the rest of the list
+    }
+
+    public static int recSearch(int key) {
+        return helper(head, key);
+    }
+
     public static void main(String args[]) {
-        howtocreatealinklist ll = new howtocreatealinklist();
+        recursivesearch ll = new recursivesearch();
 
         ll.addFirst(13);
-        ll.printll();
-
         ll.addFirst(12);
-        ll.printll();
+        ll.addFirst(18);
+        ll.printll(); // Output: 18 -> 12 -> 13 -> Null
 
-        ll.add(2, 18);
-        ll.printll();
+        int key = 12;
+        int index = ll.recSearch(key);
+        System.out.println(index != -1 ? "Element found at index: " + index : "Element not found");
 
-        ll.addLast(14);
-        ll.printll();
-
-        ll.removeFirst();
-        ll.printll();
-
-        ll.removeLast();
-        ll.printll();
-
-        System.out.println("Size: " + ll.size);
+        key = 20;
+        index = ll.recSearch(key);
+        System.out.println(index != -1 ? "Element found at index: " + index : "Element not found");
     }
 }
