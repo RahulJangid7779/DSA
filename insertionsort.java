@@ -1,7 +1,6 @@
-public class InsertionSort {
+public class insertionsort {
   public static void insertionSort(int arr[]) {
     int n = arr.length;
-    
     for (int i = 1; i < n; i++) {   // Start from the second element
       int key = arr[i];             // The element to be placed correctly
       int j = i - 1;                // Start comparing with the previous element
