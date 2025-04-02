@@ -14,7 +14,7 @@ public class howtocreatealinklist {
     public static Node head;
     public static Node tail;
     public static int size;
-
+  
     // Add First
     public static void addFirst(int data) {
         Node newNode = new Node(data);
@@ -66,7 +66,6 @@ public class howtocreatealinklist {
         newNode.next = temp.next;
         temp.next = newNode;
     }
-
     // Remove First
     public static int removeFirst() {
         if (size == 0) {

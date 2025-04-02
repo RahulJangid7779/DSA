@@ -89,7 +89,7 @@ public class recursivesearch {
     // ✅ Corrected Recursive Search Function
     public static int helper(Node head, int key) {
         if (head == null) {
-            return -1; // Not found
+            return -1; // Not found  
         }
         if (head.data == key) {
             return 0; // Found at current index

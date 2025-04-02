@@ -123,7 +123,6 @@ public class deletenthelementinll {
         while(i<itofind){
             prev=prev.next;
             i++;
-
         }
         prev.next=prev.next.next;
         return ;
