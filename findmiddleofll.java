@@ -130,6 +130,17 @@ public class FullSinglyLinkedList {
 
         head = prev;
     }
+    public static Node findmiddle(Node head ){
+      if(head==null || head.next==null) return head;
+      Node slow=head;
+      Node fast=head;
+      while(fast!=null && fast.next!=null){
+        slow=slow.next;
+        fast=fast.next.next;
+      }
+      return slow;
+
+    }
 
     // Print the list
     public static void printLL() {
