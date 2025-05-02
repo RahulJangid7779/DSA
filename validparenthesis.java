@@ -34,3 +34,4 @@ public class ValidParentheses {
         System.out.println("Is the string valid? " + isValid(str));
     }
 }
+   

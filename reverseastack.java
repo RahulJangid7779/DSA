@@ -11,7 +11,7 @@ public class ReverseStack {
         int top = stack.pop();
         pushAtBottom(stack, data);
         stack.push(top);
-    }
+    }        
 
     // Recursively reverse the stack
     public static void reverseStack(Stack<Integer> stack) {
