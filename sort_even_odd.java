@@ -2,7 +2,10 @@ import java.util.*;
 public class sort_even_odd {
   public static void arr1(int arr[],n,left,rigth){
     while(left<rigth){
-      if(arr[left]%2==0 && arr[right]%2==1){
+      if(arr[left]%2==1&& arr[right]%2==0){
+        int temp=arr[left];
+        arr[left]=arr[rigt];
+        arr[right]=temp;
         left++;
         rigth--;
       }

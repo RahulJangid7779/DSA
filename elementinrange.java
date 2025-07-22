@@ -9,5 +9,5 @@ public class elementinrange {
         System.out.print(arr[i]);
       }
     }
-  }
+  }8
 }
