@@ -1,30 +1,46 @@
-import java.util.ArrayList;
-import java.util.List;
+public class convertlinklisttoarray {
 
-public class convertarraytolinklist {
-  public class Node{
-    int data;
-    Node next;
-    public Node(int data){
-      this.data=data;
-      this.next=null;
-    }
-    public static List<Integer> converttoarray(Node head){
-      List<Integer> arr= new ArrayList<>();
-      Node temp=head;
-      while(temp!=null){
-arr.add(temp.data);
-temp=temp.next;
+  // Define Node class
+  public static class Node {
+      int data;
+      Node next;
+
+      public Node(int data) {
+          this.data = data;
+          this.next = null;
       }
-      return arr;
-    }
-    public static void main(String args[]){
-      Node head=new Node(1);
-      head.next=new Node(2);
-      head.next.next=new Node(3);
-      head.next.next.next=new Node(4);
-       List<Integer> arr = converttoarray(head);
-        System.out.println("Array: " + arr);
-    }
+  }
+
+  // Convert array to linked list and return head
+  public static Node arrayToLinkedList(int[] arr) {
+      if (arr.length == 0) return null;
+
+      Node head = new Node(arr[0]); 
+      Node current = head;
+
+      for (int i = 1; i < arr.length; i++) {
+          current.next = new Node(arr[i]); // Add next node
+          current = current.next;
+      }
+      return head;
+  }
+
+  // Print linked list
+  public static void printLinkedList(Node head) {
+      Node temp = head;
+      while (temp != null) {
+          System.out.print(temp.data + " -> ");
+          temp = temp.next;
+      }
+      System.out.println("null");
+  }
+
+  public static void main(String[] args) {
+      int[] arr = {10, 20, 30, 40, 50};
+
+      Node head = arrayToLinkedList(arr);
+
+      System.out.print("Linked List: ");
+      printLinkedList(head);
   }
 }
